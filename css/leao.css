@@ -1,0 +1,250 @@
+/* ==========================================================================
+   LEÃO FACILITE — identidade visual
+   Grafite texturizado e ouro, tirados do emblema.
+   ========================================================================== */
+
+:root{
+  --grafite-900:#0E1116;
+  --grafite-800:#161B22;
+  --grafite-700:#1E252F;
+  --linha:#2C3543;
+  --ouro:#F5B301;
+  --ouro-claro:#FFD65A;
+  --ouro-fundo:rgba(245,179,1,.12);
+  --creme:#ECE7DB;
+  --creme-fraco:#96A0AE;
+  --alerta:#D8453B;
+  --ok:#5FBF7F;
+  --raio:10px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  min-height:100dvh;
+  font-family:Inter,"Segoe UI",system-ui,sans-serif;
+  color:var(--creme);
+  background:
+    radial-gradient(120% 90% at 50% -10%, #1C2430 0%, var(--grafite-900) 55%, #080A0E 100%);
+  background-attachment:fixed;
+  line-height:1.55;
+}
+
+/* grão sutil, como o fundo do emblema */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.5;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.022) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.018) 0 1px, transparent 1px),
+    radial-gradient(circle at 45% 85%, rgba(255,255,255,.02) 0 1px, transparent 1px);
+  background-size:7px 7px, 11px 11px, 9px 9px;
+}
+
+h1,h2,h3,.numeral{
+  font-family:Anton,"Arial Narrow",Impact,sans-serif;
+  font-weight:400;
+  letter-spacing:.5px;
+  line-height:1.05;
+}
+
+a{color:var(--ouro);text-decoration:none}
+a:hover{text-decoration:underline}
+
+:focus-visible{outline:2px solid var(--ouro);outline-offset:2px;border-radius:4px}
+
+/* --------------------------------------------------------------- emblema */
+.emblema{
+  width:96px;height:96px;
+  border-radius:20px;
+  background:linear-gradient(160deg,#20242C,#0F1218);
+  border:1px solid var(--linha);
+  display:grid;place-items:center;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.55);
+}
+.emblema::after{
+  content:"";position:absolute;left:-12%;right:-12%;top:34%;height:30%;
+  background:linear-gradient(90deg,var(--ouro-claro),var(--ouro));
+  clip-path:polygon(0 0,50% 42%,100% 0,100% 55%,50% 100%,0 55%);
+  opacity:.95;
+}
+.emblema img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2}
+.emblema span{
+  position:relative;z-index:2;
+  font-family:Anton,sans-serif;font-size:40px;color:var(--grafite-900);
+}
+.emblema.pequeno{width:44px;height:44px;border-radius:11px}
+.emblema.pequeno span{font-size:19px}
+
+/* ------------------------------------------------------------- telas */
+.tela{display:none;animation:entra .22s ease-out}
+.tela.ativa{display:block}
+@keyframes entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tela{animation:none}}
+
+.entrada{
+  min-height:100dvh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:22px;padding:28px 18px 46px;
+}
+.marca{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.marca h1{font-size:40px;color:var(--creme)}
+.marca p{color:var(--creme-fraco);font-size:14px;max-width:34ch}
+
+.cartao{
+  width:100%;max-width:420px;
+  background:linear-gradient(180deg,var(--grafite-800),#12161D);
+  border:1px solid var(--linha);
+  border-radius:var(--raio);
+  padding:26px 24px;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+.cartao h2{font-size:23px;margin-bottom:4px}
+.cartao > p.sub{color:var(--creme-fraco);font-size:13.5px;margin-bottom:20px}
+
+/* ------------------------------------------------------------ formulário */
+.campo{margin-bottom:15px}
+.campo label{display:block;font-size:13px;color:var(--creme-fraco);margin-bottom:6px}
+.campo input{
+  width:100%;padding:11px 13px;
+  background:var(--grafite-900);
+  border:1px solid var(--linha);
+  border-radius:8px;
+  color:var(--creme);font-size:15px;font-family:inherit;
+}
+.campo input::placeholder{color:#5D6876}
+.campo input:focus{border-color:var(--ouro);outline:none}
+.campo .dica{font-size:12px;color:#6F7987;margin-top:5px}
+.campo.erro input{border-color:var(--alerta)}
+.campo .msg-erro{font-size:12.5px;color:var(--alerta);margin-top:5px;display:none}
+.campo.erro .msg-erro{display:block}
+
+.com-prefixo{display:flex;align-items:center;background:var(--grafite-900);border:1px solid var(--linha);border-radius:8px}
+.com-prefixo span{padding:0 4px 0 13px;color:var(--ouro);font-size:15px}
+.com-prefixo input{border:none;background:none;padding-left:2px}
+.com-prefixo:focus-within{border-color:var(--ouro)}
+.campo.erro .com-prefixo{border-color:var(--alerta)}
+
+.aceite{display:flex;gap:10px;align-items:flex-start;margin:18px 0 6px}
+.aceite input{margin-top:3px;width:16px;height:16px;accent-color:var(--ouro);flex:none}
+.aceite label{font-size:12.5px;color:var(--creme-fraco);line-height:1.5}
+
+.botao{
+  width:100%;padding:12px 16px;border:none;border-radius:8px;
+  background:linear-gradient(180deg,var(--ouro-claro),var(--ouro));
+  color:#16181C;font-family:Anton,sans-serif;font-size:17px;letter-spacing:.6px;
+  cursor:pointer;margin-top:12px;
+}
+.botao:hover{filter:brightness(1.07)}
+.botao:disabled{opacity:.55;cursor:progress}
+.botao.secundario{
+  background:none;border:1px solid var(--linha);color:var(--creme);
+  font-family:Inter,sans-serif;font-size:14px;letter-spacing:0;
+}
+.botao.secundario:hover{border-color:var(--ouro);color:var(--ouro);filter:none}
+
+.rodape-cartao{margin-top:18px;text-align:center;font-size:13.5px;color:var(--creme-fraco)}
+
+.aviso{
+  padding:11px 13px;border-radius:8px;font-size:13.5px;margin-bottom:16px;display:none;
+}
+.aviso.ver{display:block}
+.aviso.ruim{background:rgba(216,69,59,.12);border:1px solid rgba(216,69,59,.4);color:#F0A9A3}
+.aviso.bom{background:rgba(95,191,127,.1);border:1px solid rgba(95,191,127,.35);color:#A5DDB6}
+.aviso.ouro{background:var(--ouro-fundo);border:1px solid rgba(245,179,1,.35);color:var(--ouro-claro)}
+
+/* --------------------------------------------------------------- painel */
+.topo{
+  position:sticky;top:0;z-index:5;
+  display:flex;align-items:center;gap:14px;
+  padding:12px 18px;
+  background:rgba(14,17,22,.92);
+  border-bottom:1px solid var(--linha);
+  backdrop-filter:blur(6px);
+}
+.topo .nome{flex:1;min-width:0}
+.topo .nome strong{display:block;font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.topo .nome small{color:var(--creme-fraco);font-size:12px}
+.sair{background:none;border:none;color:var(--creme-fraco);font-size:13px;cursor:pointer;font-family:inherit}
+.sair:hover{color:var(--ouro)}
+
+.conteudo{max-width:900px;margin:0 auto;padding:22px 18px 60px}
+
+/* o contador de Lions é o elemento de destaque da plataforma */
+.creditos{
+  background:linear-gradient(170deg,#1B212B,#0F1319);
+  border:1px solid rgba(245,179,1,.28);
+  border-radius:14px;
+  padding:22px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  position:relative;overflow:hidden;
+}
+.creditos::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(245,179,1,.16),transparent 65%);
+}
+.creditos .valor{display:flex;align-items:baseline;gap:10px}
+.creditos .numeral{
+  font-size:58px;color:var(--ouro);
+  text-shadow:0 0 22px rgba(245,179,1,.3);
+  font-variant-numeric:tabular-nums;
+}
+.creditos .unidade{font-family:Anton,sans-serif;font-size:20px;color:var(--ouro-claro)}
+.creditos .legenda{color:var(--creme-fraco);font-size:13px;max-width:24ch;position:relative}
+
+.grade{display:grid;gap:14px;margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+
+.bloco{
+  background:var(--grafite-800);
+  border:1px solid var(--linha);
+  border-radius:var(--raio);
+  padding:18px 20px;
+}
+.bloco h3{font-size:17px;margin-bottom:10px}
+.bloco p{font-size:13.5px;color:var(--creme-fraco)}
+.bloco .destaque{font-family:Anton,sans-serif;font-size:34px;color:var(--creme);line-height:1}
+.bloco .destaque small{font-family:Inter,sans-serif;font-size:13px;color:var(--creme-fraco);margin-left:6px}
+
+.etiqueta{
+  display:inline-block;padding:3px 9px;border-radius:99px;font-size:11.5px;
+  border:1px solid var(--linha);color:var(--creme-fraco);
+}
+.etiqueta.cotista{border-color:rgba(245,179,1,.5);color:var(--ouro);background:var(--ouro-fundo)}
+
+.vazio{
+  border:1px dashed var(--linha);border-radius:var(--raio);
+  padding:34px 22px;text-align:center;color:var(--creme-fraco);font-size:14px;
+}
+.vazio strong{display:block;color:var(--creme);font-family:Anton,sans-serif;font-size:19px;margin-bottom:6px;letter-spacing:.4px}
+
+.rodape{
+  max-width:900px;margin:0 auto;padding:26px 18px 40px;
+  color:#6B7583;font-size:12px;line-height:1.7;border-top:1px solid var(--linha);
+}
+
+/* --------------------------------------------------------------- modal */
+.modal{
+  position:fixed;inset:0;z-index:20;display:none;
+  background:rgba(6,8,11,.78);
+  padding:20px;overflow-y:auto;
+}
+.modal.ver{display:flex;align-items:center;justify-content:center}
+.modal .caixa{
+  background:var(--grafite-800);border:1px solid var(--linha);border-radius:var(--raio);
+  max-width:560px;width:100%;padding:26px 24px;
+}
+.modal h2{font-size:21px;margin-bottom:12px}
+.modal p{font-size:13.5px;color:var(--creme-fraco);margin-bottom:11px}
+.modal strong{color:var(--creme)}
+
+@media (max-width:520px){
+  .marca h1{font-size:32px}
+  .creditos .numeral{font-size:46px}
+  .cartao{padding:22px 18px}
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leão Facilite — jogos, ranking e nenhuma aposta</title>
+<meta name="description" content="Plataforma de mini-jogos do Leão Facilite. Jogue com Lions, dispute o ranking. Sem aposta, sem dinheiro real.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/leao.css">
+</head>
+<body>
+
+<!-- ===================== ENTRAR ===================== -->
+<section id="tela-entrar" class="tela ativa">
+  <div class="entrada">
+    <div class="marca">
+      <div class="emblema" id="emblema-entrada"><span>LF</span></div>
+      <h1>LEÃO FACILITE</h1>
+      <p>Jogos rápidos, ranking mensal e zero aposta. Você joga com Lions, não com dinheiro.</p>
+    </div>
+
+    <div class="cartao">
+      <h2>Entrar</h2>
+      <p class="sub">Use o e-mail do seu cadastro.</p>
+
+      <div class="aviso" id="aviso-entrar"></div>
+
+      <div class="campo" id="c-entrar-email">
+        <label for="entrar-email">E-mail</label>
+        <input id="entrar-email" type="email" autocomplete="email" placeholder="voce@email.com">
+        <div class="msg-erro">Informe um e-mail válido.</div>
+      </div>
+
+      <div class="campo" id="c-entrar-senha">
+        <label for="entrar-senha">Senha</label>
+        <input id="entrar-senha" type="password" autocomplete="current-password" placeholder="••••••••">
+        <div class="msg-erro">Informe sua senha.</div>
+      </div>
+
+      <button class="botao" id="btn-entrar">Entrar</button>
+      <button class="botao secundario" id="btn-esqueci" style="margin-top:8px">Esqueci minha senha</button>
+
+      <p class="rodape-cartao">Ainda não tem conta? <a href="#" id="ir-cadastro">Criar cadastro</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CADASTRO ===================== -->
+<section id="tela-cadastro" class="tela">
+  <div class="entrada">
+    <div class="marca">
+      <div class="emblema"><span>LF</span></div>
+      <h1>CRIAR CADASTRO</h1>
+      <p>Leva um minuto. Você começa com 300 Lions por dia.</p>
+    </div>
+
+    <div class="cartao">
+      <div class="aviso" id="aviso-cadastro"></div>
+
+      <div class="campo" id="c-instagram">
+        <label for="cad-instagram">Seu Instagram</label>
+        <div class="com-prefixo">
+          <span>@</span>
+          <input id="cad-instagram" type="text" autocapitalize="none" autocomplete="username" placeholder="seuperfil">
+        </div>
+        <div class="dica">É assim que a gente te encontra para avisar de novidades e temporadas.</div>
+        <div class="msg-erro"></div>
+      </div>
+
+      <div class="campo" id="c-email">
+        <label for="cad-email">E-mail</label>
+        <input id="cad-email" type="email" autocomplete="email" placeholder="voce@email.com">
+        <div class="dica">Você vai receber um link de confirmação neste endereço.</div>
+        <div class="msg-erro">Informe um e-mail válido.</div>
+      </div>
+
+      <div class="campo" id="c-nickname">
+        <label for="cad-nickname">Nome no ranking <span style="color:#5D6876">(opcional)</span></label>
+        <input id="cad-nickname" type="text" maxlength="20" placeholder="Como quer aparecer">
+        <div class="dica">Sem preencher, aparece o seu @.</div>
+        <div class="msg-erro">Use de 2 a 20 caracteres.</div>
+      </div>
+
+      <div class="campo" id="c-senha">
+        <label for="cad-senha">Senha</label>
+        <input id="cad-senha" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+        <div class="msg-erro">A senha precisa ter pelo menos 8 caracteres.</div>
+      </div>
+
+      <div class="aceite" id="c-aceite">
+        <input type="checkbox" id="cad-aceite">
+        <label for="cad-aceite">
+          Li e aceito os <a href="#" id="ver-termos">termos de uso</a>. Entendo que Lions e cota são
+          créditos de entretenimento, sem valor monetário, sem prêmio em dinheiro e sem qualquer
+          retorno financeiro.
+        </label>
+      </div>
+
+      <button class="botao" id="btn-cadastrar">Criar meu cadastro</button>
+
+      <p class="rodape-cartao">Já tem conta? <a href="#" id="ir-entrar">Entrar</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONFIRMAR E-MAIL ===================== -->
+<section id="tela-confirmar" class="tela">
+  <div class="entrada">
+    <div class="marca">
+      <div class="emblema"><span>LF</span></div>
+      <h1>CONFIRME SEU E-MAIL</h1>
+    </div>
+    <div class="cartao">
+      <p class="sub" style="margin-bottom:18px">
+        Enviamos um link para <strong id="email-enviado" style="color:var(--creme)"></strong>.
+        Abra o e-mail e clique no link para liberar sua conta. Confira também a caixa de spam.
+      </p>
+      <div class="aviso" id="aviso-confirmar"></div>
+      <button class="botao secundario" id="btn-reenviar">Reenviar o link</button>
+      <p class="rodape-cartao">Já confirmou? <a href="#" id="confirmado-entrar">Entrar agora</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAINEL ===================== -->
+<section id="tela-painel" class="tela">
+  <header class="topo">
+    <div class="emblema pequeno"><span>LF</span></div>
+    <div class="nome">
+      <strong id="p-nome">—</strong>
+      <small id="p-tipo">—</small>
+    </div>
+    <button class="sair" id="btn-sair">Sair</button>
+  </header>
+
+  <main class="conteudo">
+    <div class="aviso ouro" id="alerta-cota"></div>
+
+    <div class="creditos">
+      <div class="valor">
+        <span class="numeral" id="p-lions">0</span>
+        <span class="unidade">Lions</span>
+      </div>
+      <p class="legenda" id="p-lions-legenda">Seu saldo de hoje. Renova todo dia à meia-noite e não acumula.</p>
+    </div>
+
+    <div class="grade">
+      <div class="bloco">
+        <h3>Sua pontuação</h3>
+        <div class="destaque"><span id="p-pontos">0,00</span><small id="p-temporada"></small></div>
+        <p style="margin-top:8px">Soma da sua melhor marca em cada jogo.</p>
+      </div>
+
+      <div class="bloco">
+        <h3>Sua cota</h3>
+        <div id="p-cota-conteudo">
+          <p>Você joga com 300 Lions por dia.</p>
+        </div>
+        <button class="botao secundario" id="btn-cota" style="margin-top:12px">Ver a cota mensal</button>
+      </div>
+
+      <div class="bloco">
+        <h3>Seu nome no ranking</h3>
+        <div class="campo" id="c-nickname-painel" style="margin:8px 0 0">
+          <input id="p-nickname" type="text" maxlength="20" placeholder="Como quer aparecer">
+          <div class="msg-erro">Use de 2 a 20 caracteres.</div>
+        </div>
+        <button class="botao secundario" id="btn-nickname" style="margin-top:10px">Salvar nome</button>
+        <p id="p-nickname-ok" style="margin-top:8px;color:var(--ok);display:none">Nome atualizado.</p>
+      </div>
+    </div>
+
+    <div class="vazio" style="margin-top:20px">
+      <strong>OS JOGOS CHEGAM NA PRÓXIMA ETAPA</strong>
+      Seu cadastro, seus Lions e sua conta já estão funcionando. O primeiro jogo entra assim que
+      terminarmos o motor de pontuação — e o ranking abre junto com ele.
+    </div>
+  </main>
+
+  <footer class="rodape">
+    Leão Facilite é uma plataforma de entretenimento. Lions e cotas são créditos de uso interno,
+    sem valor monetário, sem prêmio em dinheiro e sem retorno financeiro de qualquer natureza.
+    Não há aposta, sorteio ou jogo de azar.
+  </footer>
+</section>
+
+<!-- ===================== TERMOS ===================== -->
+<div class="modal" id="modal-termos">
+  <div class="caixa">
+    <h2>Termos de uso</h2>
+    <p><strong>O que é.</strong> O Leão Facilite é uma plataforma de mini-jogos de habilidade. Você
+      usa créditos chamados Lions para jogar e disputa posições em rankings.</p>
+    <p><strong>Lions.</strong> São créditos internos de entretenimento. Não têm valor monetário, não
+      são conversíveis em dinheiro, não são transferíveis e não geram prêmio financeiro. Todo dia
+      você recebe um novo saldo; o saldo do dia anterior não acumula.</p>
+    <p><strong>Cota.</strong> A cota mensal é a compra de mais créditos de entretenimento por um
+      período. Não é investimento, não é cota societária, não dá direito a participação em
+      resultados e não promete retorno de qualquer espécie.</p>
+    <p><strong>Sem aposta.</strong> Não existe aposta, sorteio ou jogo de azar na plataforma. A
+      pontuação depende exclusivamente do seu desempenho.</p>
+    <p><strong>Seus dados.</strong> Guardamos seu e-mail, seu @ do Instagram, o nome que você
+      escolher e o histórico das suas partidas. Usamos isso para operar a plataforma e avisar de
+      novidades. Você pode pedir a exclusão da sua conta a qualquer momento.</p>
+    <p><strong>Conduta.</strong> Contas que usem trapaça ou automação para adulterar pontuação podem
+      ser removidas do ranking.</p>
+    <button class="botao" id="fechar-termos">Entendi</button>
+  </div>
+</div>
+
+<script type="module" src="js/config.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
