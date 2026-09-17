@@ -122,7 +122,7 @@ $("btn-cadastrar").onclick = async () => {
       return;
     }
 
-    const { error } = await sb.auth.signUp({
+    const { data, error } = await sb.auth.signUp({
       email,
       password: senha,
       options: {
@@ -133,6 +133,15 @@ $("btn-cadastrar").onclick = async () => {
 
     if (error) {
       aviso("aviso-cadastro", traduzir(error));
+      ocupado(botao, false);
+      return;
+    }
+
+    // Quando o e-mail já tem conta, o Supabase responde sem erro e sem enviar
+    // o link (é uma proteção contra descobrir quem está cadastrado). O sinal
+    // dessa situação é a lista de identidades vir vazia.
+    if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      marcarErro("c-email", "Este e-mail já tem cadastro. Entre com ele ou use outro endereço.");
       ocupado(botao, false);
       return;
     }
