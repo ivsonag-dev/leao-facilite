@@ -7,12 +7,12 @@
    ========================================================================== */
 
 window.LEAO_CONFIG = {
-  SUPABASE_URL: "COLE_AQUI_A_URL_DO_PROJETO",
-  SUPABASE_ANON_KEY: "COLE_AQUI_A_CHAVE_ANON_PUBLIC",
+  SUPABASE_URL: "https://aasmpbhptywlqsbojalg.supabase.co/rest/v1/",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFhc21wYmhwdHl3bHFzYm9qYWxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk2NjY5NjIsImV4cCI6MjEwNTI0Mjk2Mn0.PzMA1xc5pKLc3barpM9z0PdYea8nD3c_MTQu4_8xq5c",
 
   // Endereço público do site, com a barra no final.
   // Ex.: "https://seuusuario.github.io/leao-facilite/"
-  URL_SITE: "http://localhost:5500/",
+  URL_SITE: "https://ivsonag-dev.github.io/leao-facilite/",
 
   INSTAGRAM: "leaofacilite"
 };
